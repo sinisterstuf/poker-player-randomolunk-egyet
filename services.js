@@ -62,12 +62,11 @@ function cardholder(game_state) {
     });
     cards.push(checkCard(ours[0].rank));
     cards.push(checkCard(ours[1].rank));
-    return cards;
+    return cards.sort();
 }
 
 function findPair(game_state) {
     var cards = cardholder(game_state);
-    cards.sort();
     for (var i in cards) {
         if (i = cards.length) return false;
         if (cards[i] === cards[i+1]) {
@@ -76,6 +75,28 @@ function findPair(game_state) {
     }
 }
 
+function twoPair(game_state) {
+    var cards = cardholder(game_state);
+    counter = 0;
+    for (var i = 0; i < cards.length - 2; i++) {
+        if (cards[i] === cards[i+1]) {
+            counter++;
+            i++;
+        }
+    }
+    if (counter >= 2) {
+        return true;
+    }
+}
+
+function threeOfaKind() {
+    var cards = cardholder(game_state);
+     for (var i in cards) {
+        if (cards[i] === cards[i+1] && cards[i+1] === cards[i+2]) {
+           return true;
+        }
+    }
+}
 
 function lotsOfMoney(gs) {
     if (minbet(gs) >= gs.players[gs.in_action].stack / 2) {
