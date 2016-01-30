@@ -64,8 +64,7 @@ function cardholder(game_state) {
     return cards.sort();
 }
 
-function findPair(game_state) {
-    var cards = cardholder(game_state);
+function findPair(cards) {
     for (var i in cards) {
         if (i = cards.length) return false;
         if (cards[i] === cards[i+1]) {
@@ -74,8 +73,7 @@ function findPair(game_state) {
     }
 }
 
-function twoPair(game_state) {
-    var cards = cardholder(game_state);
+function twoPair(cards) {
     counter = 0;
     for (var i = 0; i < cards.length - 2; i++) {
         if (cards[i] === cards[i+1]) {
@@ -88,8 +86,7 @@ function twoPair(game_state) {
     }
 }
 
-function threeOfaKind(game_state) {
-    var cards = cardholder(game_state);
+function threeOfaKind(cards) {
      for (var i in cards) {
         if (cards[i] === cards[i+1] && cards[i+1] === cards[i+2]) {
            return true;
@@ -110,9 +107,11 @@ function lotsOfMoney(gs) {
 }
 
 function ranking(gs) {
-  if (threeOfaKind(gs)) return odds.three
-  if (twoPair(gs)) return odds.twoPair;
-  if (findPair(gs)) {
+  var cards = cardholder(gs);
+
+  if (threeOfaKind(cards)) return odds.three
+  if (twoPair(cards)) return odds.twoPair;
+  if (findPair(cards)) {
     return odds.pair;
   } else {
     return false;
