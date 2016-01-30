@@ -1,3 +1,7 @@
+function minbet(gs) {
+  return gs.current_buy_in - gs.players[in_action][bet] + gs.minimum_raise;
+}
+
 function checkCard(card) {
         switch (card) {
             case "J" :
