@@ -19,15 +19,18 @@ function checkCard(card) {
             default:
                 card = card;
         }
+        return card;
     }
 
 function calculateBet(game_state) {
     var ours = game_state.players[game_state.in_action].hole_cards;
-      if (ours[0] === ours[1]) {
+    var card1 = checkCard(ours[0]);
+    var card2 = checkCard(ours[1]);
+      if (card1 === card2) {
         return 100000;
-      } else if (ours[0] < 6 && ours[1] < 6) {
+      } else if (card1 < 6 && card2 < 6) {
         return 10;
-      } else if (ours[0] < 10 && ours[1] < 10) {
+      } else if (card1 < 10 && card2 < 10) {
         return 200;
       } else {
         return 100000;
