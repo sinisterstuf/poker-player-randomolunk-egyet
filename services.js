@@ -25,7 +25,7 @@ function checkCard(card) {
     }
 
 function calculateBet(gs) {
-      return minbet(gs) + randomRaise(ranking(gs));
+      return minbet(gs) + raise(ranking(gs));
 }
 
 function cardholder(game_state) {
@@ -72,7 +72,7 @@ function threeOfaKind(game_state) {
     }
 }
 
-function randomRaise(rank) {
+function raise(rank) {
     var small = 100;
     var big = 300;
     return big * rank;
