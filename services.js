@@ -104,6 +104,17 @@ function lotsOfMoney(gs) {
     }
 }
 
+function ranking(gs) {
+  if (threeOfaKind(gs)) return odds.three
+  if (twoPair(gs)) return odds.twoPair;
+  if (pair(gs)) {
+    return odds.pair;
+  } else {
+    return odds.highCard;
+  }
+
+}
+
 var odds = {
   highCard: 1,
   pair : 1.37,
