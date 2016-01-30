@@ -31,4 +31,25 @@ describe("player", function() {
         })
     })
 
+    describe("#twoPair", function() {
+        it("double in hand is impossible", function() {
+            assert.equal( s.twoPair([2,2]), false )
+        })
+        it("ignores non-pair in hand", function() {
+            assert.equal( s.twoPair([2,3]), false )
+        })
+        it("finds double", function() {
+            assert.equal( s.twoPair([2,2,3,3,4]), true )
+        })
+        it("ignores single pair", function() {
+            assert.equal( s.twoPair([1,2,3,3,4]), false )
+        })
+        it("finds aces in common", function() {
+            assert.equal( s.twoPair([14,14,1,2,3,3,4]), true )
+        })
+        it("ignores non-pair", function() {
+            assert.equal( s.twoPair([1,2,3,4,5]), false )
+        })
+    })
+
 })
