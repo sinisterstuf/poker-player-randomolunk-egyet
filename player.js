@@ -1,3 +1,6 @@
+'use strict';
+
+var checkCard = require("./services.js");
 
 module.exports = {
 
@@ -21,3 +24,6 @@ module.exports = {
 
   }
 };
+
+
+
