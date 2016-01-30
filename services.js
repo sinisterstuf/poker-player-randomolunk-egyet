@@ -46,10 +46,10 @@ function highCards(gs) {
     return minbet(gs);
   } else if (card1 < 10 && card2 < 10 && !lotsOfMoney(gs)) {
     l("middle cards");
-    return minbet(gs) + 200;
+    return minbet(gs) + 50;
   } else {
     l("high cards");
-    return minbet(gs) + 100000;
+    return minbet(gs) + 200;
   }
 }
 
@@ -67,7 +67,7 @@ function cardholder(game_state) {
 function findPair(game_state) {
     var cards = cardholder(game_state);
     for (var i in cards) {
-        if (i = cards.length) return false;
+        if (i === cards.length) return false;
         if (cards[i] === cards[i+1]) {
             return true;
         }
@@ -135,5 +135,16 @@ var odds = {
 
 
 module.exports = {
-    calBet: calculateBet,
+  calBet: calculateBet,
+  minbet: minbet,
+  checkCard: checkCard,
+  calculateBet: calculateBet,
+  highCards: highCards,
+  cardholder: cardholder,
+  findPair: findPair,
+  twoPair: twoPair,
+  threeOfaKind: threeOfaKind,
+  raise: raise,
+  lotsOfMoney: lotsOfMoney,
+  ranking: ranking,
 }
