@@ -2,6 +2,8 @@ function minbet(gs) {
   return gs.current_buy_in - gs.players[in_action][bet] + gs.minimum_raise;
 }
 
+var l = console.log;
+
 function checkCard(card) {
         switch (card) {
             case "J" :
@@ -27,12 +29,16 @@ function calculateBet(game_state) {
     var card1 = checkCard(ours[0]);
     var card2 = checkCard(ours[1]);
       if (card1 === card2) {
+        l("pair");
         return 100000;
       } else if (card1 < 6 && card2 < 6) {
+        l("low cards");
         return 10;
       } else if (card1 < 10 && card2 < 10) {
+        l("middle cards");
         return 200;
       } else {
+        l("high cards");
         return 100000;
       }
 }
