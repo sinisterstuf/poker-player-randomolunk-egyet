@@ -4,12 +4,12 @@ var gs = require("./data/game-state-example.json")
 
 describe("player", () => {
 
-    describe("#checkCard", () => {
+    describe("#cardToNum", () => {
         it("converts 7 to 7", () => {
-            assert.equal( s.checkCard(7), 7 )
+            assert.equal( s.cardToNum(7), 7 )
         })
         it("converts A to 14", () => {
-            assert.equal( s.checkCard('A'), 14 )
+            assert.equal( s.cardToNum('A'), 14 )
         })
     })
 

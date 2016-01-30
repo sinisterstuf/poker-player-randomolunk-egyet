@@ -4,24 +4,14 @@ function minbet(gs) {
 
 var l = console.log;
 
-function checkCard(card) {
+function cardToNum(card) {
   switch (card) {
-    case "J" :
-      card = 11;
-      break;
-    case "Q" :
-      card = 12;
-      break;
-    case "K" :
-      card = 13;
-      break;
-    case "A" :
-      card = 14;
-      break;
-    default:
-      card = card;
+    case "J": return 11;
+    case "Q": return 12;
+    case "K": return 13;
+    case "A": return 14;
+    default: return card;
   }
-  return card;
 }
 
 function calculateBet(gs) {
@@ -40,8 +30,8 @@ function calculateBet(gs) {
 
 function highCards(gs) {
   var ours = gs.players[gs.in_action].hole_cards;
-  var card1 = checkCard(ours[0].rank);
-  var card2 = checkCard(ours[1].rank);
+  var card1 = cardToNum(ours[0].rank);
+  var card2 = cardToNum(ours[1].rank);
 
   if (card1 < 2 && card2 < 2) {
     return 10;
@@ -63,10 +53,10 @@ function cardholder(game_state) {
   var ours = game_state.players[game_state.in_action].hole_cards;
   var common = game_state.community_cards;
   var cards = common.map(function(x) {
-    return checkCard(x.rank);
+    return cardToNum(x.rank);
   });
-  cards.push(checkCard(ours[0].rank));
-  cards.push(checkCard(ours[1].rank));
+  cards.push(cardToNum(ours[0].rank));
+  cards.push(cardToNum(ours[1].rank));
   return cards.sort(function(a,b) {return a-b;});
 }
 
@@ -145,7 +135,7 @@ var odds = {
 module.exports = {
   calBet: calculateBet,
   minbet: minbet,
-  checkCard: checkCard,
+  cardToNum: cardToNum,
   calculateBet: calculateBet,
   highCards: highCards,
   cardholder: cardholder,
