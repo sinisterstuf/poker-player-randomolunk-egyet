@@ -1,5 +1,5 @@
 function minbet(gs) {
-  return gs.current_buy_in - gs.players[in_action][bet] + gs.minimum_raise;
+  return gs.current_buy_in - gs.players[gs.in_action]['bet'] + gs.minimum_raise;
 }
 
 var l = console.log;
