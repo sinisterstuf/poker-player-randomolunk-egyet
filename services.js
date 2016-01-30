@@ -30,7 +30,11 @@ function calculateBet(gs) {
   if (r) {
     return minbet(gs) + raise(r);
   } else {
-    return highCards(gs);
+    if (!checkAfterTheTurn(gs)) {
+        return highCards(gs);
+    } else {
+        return 0;
+    }
   }
 }
 
@@ -108,15 +112,14 @@ function lotsOfMoney(gs) {
     }
 }
 
-function checkAfterTheRiver(gs) {
-    if (gs.players[gs.in_action].community_cards.length === 7) {
+function checkAfterTheTurn(gs) {
+    if (gs.community_cards.length === 4) {
         return true;
     }
 }
 
 function ranking(gs) {
   var cards = cardholder(gs);
-
   if (threeOfaKind(cards)) return odds.three
   if (twoPair(cards)) return odds.twoPair;
   if (findPair(cards)) {
