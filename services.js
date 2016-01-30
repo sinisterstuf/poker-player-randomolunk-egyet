@@ -61,7 +61,7 @@ function cardholder(game_state) {
     });
     cards.push(checkCard(ours[0].rank));
     cards.push(checkCard(ours[1].rank));
-    return cards.sort(function(a,b) return a-b;);
+    return cards.sort(function(a,b) {return a-b;});
 }
 
 function findPair(cards) {
