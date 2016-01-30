@@ -7,9 +7,9 @@ module.exports = {
     try {
       ours = game_state.players[game_state.in_action].hole_cards;
       if (ours[0] < 6 && ours[1] < 6) {
-        bet 10;
+        bet(10);
       } else {
-        bet 10000;
+        bet(10000);
       }
     } catch (e) {
       console.log(e);
