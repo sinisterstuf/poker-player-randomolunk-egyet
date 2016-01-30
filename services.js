@@ -93,6 +93,10 @@ function threeOfaKind() {
     }
 }
 
+function randomRaise(from, to) {
+    return Math.random(from, to);
+}
+
 function lotsOfMoney(gs) {
     if (minbet(gs) >= gs.players[gs.in_action].stack / 2) {
         return true;
