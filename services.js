@@ -33,7 +33,7 @@ function calculateBet(gs) {
     if (!checkAfterTheTurn(gs)) {
         return highCards(gs);
     } else {
-        return 0;
+        return 10;
     }
   }
 }
@@ -51,9 +51,11 @@ function highCards(gs) {
   } else if (card1 < 10 && card2 < 10 && !lotsOfMoney(gs)) {
     l("middle cards");
     return minbet(gs) + 50;
-  } else {
+  } else if (!lotsOfMoney(gs)) {
     l("high cards");
     return minbet(gs) + 200;
+  } else {
+    return 2;
   }
 }
 
