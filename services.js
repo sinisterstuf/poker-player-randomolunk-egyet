@@ -90,9 +90,8 @@ function ranking(gs) {
   if (findPair(gs)) {
     return odds.pair;
   } else {
-    return odds.highCard;
+    return false;
   }
-
 }
 
 var odds = {
