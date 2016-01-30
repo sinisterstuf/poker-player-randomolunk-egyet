@@ -129,5 +129,16 @@ var odds = {
 
 
 module.exports = {
-    calBet: calculateBet,
+  calBet: calculateBet,
+  minbet: minbet,
+  checkCard: checkCard,
+  calculateBet: calculateBet,
+  highCards: highCards,
+  cardholder: cardholder,
+  findPair: findPair,
+  twoPair: twoPair,
+  threeOfaKind: threeOfaKind,
+  raise: raise,
+  lotsOfMoney: lotsOfMoney,
+  ranking: ranking,
 }
