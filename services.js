@@ -25,28 +25,7 @@ function checkCard(card) {
     }
 
 function calculateBet(gs) {
-    var ours = gs.players[gs.in_action].hole_cards;
-    var card1 = checkCard(ours[0].rank);
-    var card2 = checkCard(ours[1].rank);
-
-    l(card1);
-    l(card2);
-
-      if (findPair(gs)) {
-        l("pair");
-        return minbet(gs) + 100000;
-      } else if (card1 < 2 && card2 < 2) {
-        return 10;
-      } else if (card1 < 6 && card2 < 6 && !lotsOfMoney(gs)) {
-        l("low cards");
-        return minbet(gs);
-      } else if (card1 < 10 && card2 < 10 && !lotsOfMoney(gs)) {
-        l("middle cards");
-        return minbet(gs) + 200;
-      } else {
-        l("high cards");
-        return minbet(gs) + 100000;
-      }
+      return randomRaise(ranking(gs));
 }
 
 function cardholder(game_state) {
@@ -84,7 +63,7 @@ function twoPair(game_state) {
     }
 }
 
-function threeOfaKind() {
+function threeOfaKind(game_state) {
     var cards = cardholder(game_state);
      for (var i in cards) {
         if (cards[i] === cards[i+1] && cards[i+1] === cards[i+2]) {
@@ -93,8 +72,10 @@ function threeOfaKind() {
     }
 }
 
-function randomRaise(from, to) {
-    return Math.random(from, to);
+function randomRaise(rank) {
+    var small = 50;
+    var big = 100;
+    return Math.random(small*rank, big*rank);
 }
 
 function lotsOfMoney(gs) {
@@ -106,7 +87,7 @@ function lotsOfMoney(gs) {
 function ranking(gs) {
   if (threeOfaKind(gs)) return odds.three
   if (twoPair(gs)) return odds.twoPair;
-  if (pair(gs)) {
+  if (findPair(gs)) {
     return odds.pair;
   } else {
     return odds.highCard;
