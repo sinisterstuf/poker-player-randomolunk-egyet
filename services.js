@@ -73,6 +73,5 @@ function findPair(game_state) {
 
 
 module.exports = {
-    checkCard: checkCard,
     calBet: calculateBet,
 }
