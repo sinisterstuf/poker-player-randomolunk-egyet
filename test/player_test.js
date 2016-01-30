@@ -10,11 +10,19 @@ describe("player", function() {
     })
 
     describe("#bet_request", function() {
+
         it("should return a number", function() {
             ( player.bet_request(game_state_sample, function(bet){
                 assert.equal(typeof(bet), "number")
             }))
         })
+
+        it("number should be positive", function() {
+            ( player.bet_request(game_state_sample, function(bet){
+                assert(bet >= 0)
+            }))
+        })
+
     })
 
 })
