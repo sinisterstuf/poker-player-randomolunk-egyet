@@ -42,10 +42,10 @@ function calculateBet(gs) {
         return minbet(gs) + 100000;
       } else if (card1 < 2 && card2 < 2) {
         return 10;
-      } else if (card1 < 6 && card2 < 6) {
+      } else if (card1 < 6 && card2 < 6 && !lotsOfMoney(gs)) {
         l("low cards");
         return minbet(gs);
-      } else if (card1 < 10 && card2 < 10) {
+      } else if (card1 < 10 && card2 < 10 && !lotsOfMoney(gs)) {
         l("middle cards");
         return minbet(gs) + 200;
       } else {
@@ -73,6 +73,13 @@ function findPair(game_state) {
         if (cards[i] === cards[i+1]) {
             return true;
         }
+    }
+}
+
+
+function lotsOfMoney(gs) {
+    if (minbet(gs) >= gs.players[gs.in_action].stack / 2) {
+        return true;
     }
 }
 
