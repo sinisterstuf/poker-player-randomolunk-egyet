@@ -104,6 +104,13 @@ function lotsOfMoney(gs) {
     }
 }
 
+var odds = {
+  highCard: 1,
+  pair : 1.37,
+  twoPair : 20,
+  three : 46.3
+}
+
 
 module.exports = {
     calBet: parsedBet,
