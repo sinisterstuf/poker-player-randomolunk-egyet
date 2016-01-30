@@ -18,7 +18,7 @@ describe("player", function() {
             assert.equal( s.findPair([2,2]), true )
         })
         it("ignores non-pair in hand", function() {
-            assert.equal( s.findPair([2,3]), true )
+            assert.equal( s.findPair([2,3]), false )
         })
         it("finds pair", function() {
             assert.equal( s.findPair([1,2,3,3,4]), true )
