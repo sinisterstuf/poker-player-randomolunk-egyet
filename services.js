@@ -25,7 +25,7 @@ function checkCard(card) {
     }
 
 function calculateBet(gs) {
-      return randomRaise(ranking(gs));
+      return minbet(gs) + randomRaise(ranking(gs));
 }
 
 function cardholder(game_state) {
