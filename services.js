@@ -25,6 +25,8 @@ function checkCard(card) {
     }
 
 function calculateBet(gs) {
+    console.log(minbetgs);
+    console.log(randomRaise(ranking(gs)));
       return minbet(gs) + randomRaise(ranking(gs));
 }
 
