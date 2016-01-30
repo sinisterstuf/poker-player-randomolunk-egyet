@@ -46,10 +46,10 @@ function highCards(gs) {
     return minbet(gs);
   } else if (card1 < 10 && card2 < 10 && !lotsOfMoney(gs)) {
     l("middle cards");
-    return minbet(gs) + 200;
+    return minbet(gs) + 50;
   } else {
     l("high cards");
-    return minbet(gs) + 100000;
+    return minbet(gs) + 200;
   }
 }
 
