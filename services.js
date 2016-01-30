@@ -115,9 +115,11 @@ function lotsOfMoney(gs) {
 }
 
 function checkAfterTheTurn(gs) {
-    if (gs.community_cards.length === 3) {
-        return true;
-    }
+  if (gs.community_cards.length === 3) {
+    return true;
+  } else {
+    return false;
+  }
 }
 
 function ranking(gs) {
