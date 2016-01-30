@@ -28,6 +28,7 @@ function calculateBet(game_state) {
     var ours = game_state.players[game_state.in_action].hole_cards;
     var card1 = checkCard(ours[0]);
     var card2 = checkCard(ours[1]);
+
       if (card1 === card2) {
         l("pair");
         return 100000;
@@ -41,6 +42,25 @@ function calculateBet(game_state) {
         l("high cards");
         return 100000;
       }
+}
+
+function cardholder(game_state) {
+    var ours = game_state.players[game_state.in_action].hole_cards;
+    var common = game_state.community_cards;
+    var cards = common;
+    cards.push(ours[0]);
+    cards.push(ours[1]);
+    return cards;
+}
+
+function findPair(cards) {
+    cards.sort();
+    for (var i in cards) {
+        if (i = cards.length) return false;
+        if (cards[i] === cards[i+1]) {
+            return true;
+        }
+    }
 }
 
 
