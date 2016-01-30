@@ -24,23 +24,28 @@ function checkCard(card) {
         return card;
     }
 
-function calculateBet(game_state) {
-    var ours = game_state.players[game_state.in_action].hole_cards;
+function calculateBet(gs) {
+    var ours = gs.players[gs.in_action].hole_cards;
     var card1 = checkCard(ours[0]);
     var card2 = checkCard(ours[1]);
 
-      if (card1 === card2) {
+    l(card1);
+    l(card2);
+
+      if (findPair(game_state)) {
         l("pair");
-        return 100000;
+        return minbet(gs) + 100000;
+      } else if (card1 < 2 && card2 < 2) {
+        return 10;
       } else if (card1 < 6 && card2 < 6) {
         l("low cards");
-        return 10;
+        return minbet(gs);
       } else if (card1 < 10 && card2 < 10) {
         l("middle cards");
-        return 200;
+        return minbet(gs) + 200;
       } else {
         l("high cards");
-        return 100000;
+        return minbet(gs) + 100000;
       }
 }
 
@@ -48,12 +53,13 @@ function cardholder(game_state) {
     var ours = game_state.players[game_state.in_action].hole_cards;
     var common = game_state.community_cards;
     var cards = common;
-    cards.push(ours[0]);
-    cards.push(ours[1]);
+    cards.push(ours[0].rank);
+    cards.push(ours[1].rank);
     return cards;
 }
 
-function findPair(cards) {
+function findPair(game_state) {
+    var cards = cardholder(game_state);
     cards.sort();
     for (var i in cards) {
         if (i = cards.length) return false;
