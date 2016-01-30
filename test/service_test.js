@@ -14,8 +14,17 @@ describe("player", function() {
     })
 
     describe("#findPair", function() {
+        it("finds pair in hand", function() {
+            assert.equal( s.findPair([2,2]), true )
+        })
+        it("ignores non-pair in hand", function() {
+            assert.equal( s.findPair([2,3]), true )
+        })
         it("finds pair", function() {
             assert.equal( s.findPair([1,2,3,3,4]), true )
+        })
+        it("finds aces in common", function() {
+            assert.equal( s.findPair([14,14,1,2,3,3,4]), true )
         })
         it("ignores non-pair", function() {
             assert.equal( s.findPair([1,2,3,4,5]), false )
