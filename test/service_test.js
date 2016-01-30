@@ -52,4 +52,28 @@ describe("player", function() {
         })
     })
 
+    describe("#threeOfaKind", function() {
+        it("double in hand is impossible", function() {
+            assert.equal( s.threeOfaKind([2,2]), false )
+        })
+        it("ignores non-pair in hand", function() {
+            assert.equal( s.threeOfaKind([2,3]), false )
+        })
+        it("finds triplet", function() {
+            assert.equal( s.threeOfaKind([2,3,3,3,4]), true )
+        })
+        it("ignores single pair", function() {
+            assert.equal( s.threeOfaKind([1,2,3,3,4]), false )
+        })
+        it("ignores double pair", function() {
+            assert.equal( s.threeOfaKind([2,2,3,3,4]), false )
+        })
+        it("finds aces in common", function() {
+            assert.equal( s.threeOfaKind([14,14,14,2,3,3,4]), true )
+        })
+        it("ignores non-pair", function() {
+            assert.equal( s.threeOfaKind([1,2,3,4,5]), false )
+        })
+    })
+
 })
