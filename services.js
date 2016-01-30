@@ -31,9 +31,9 @@ function calculateBet(gs) {
     return minbet(gs) + raise(r);
   } else {
     if (!checkAfterTheTurn(gs)) {
-        return highCards(gs);
+      return highCards(gs);
     } else {
-        return 10;
+      return 10;
     }
   }
 }
@@ -60,58 +60,58 @@ function highCards(gs) {
 }
 
 function cardholder(game_state) {
-    var ours = game_state.players[game_state.in_action].hole_cards;
-    var common = game_state.community_cards;
-    var cards = common.map(function(x) {
-        return checkCard(x.rank);
-    });
-    cards.push(checkCard(ours[0].rank));
-    cards.push(checkCard(ours[1].rank));
-    return cards.sort(function(a,b) {return a-b;});
+  var ours = game_state.players[game_state.in_action].hole_cards;
+  var common = game_state.community_cards;
+  var cards = common.map(function(x) {
+    return checkCard(x.rank);
+  });
+  cards.push(checkCard(ours[0].rank));
+  cards.push(checkCard(ours[1].rank));
+  return cards.sort(function(a,b) {return a-b;});
 }
 
 function findPair(cards) {
-    for (var i=0; i < cards.length-1; i++) {
-        if (cards[i] === cards[i+1]) {
-            return true;
-        }
+  for (var i=0; i < cards.length-1; i++) {
+    if (cards[i] === cards[i+1]) {
+      return true;
     }
-    return false;
+  }
+  return false;
 }
 
 function twoPair(cards) {
-    counter = 0;
-    for (var i = 0; i < cards.length - 2; i++) {
-        if (cards[i] === cards[i+1]) {
-            counter++;
-            i++;
-        }
+  counter = 0;
+  for (var i = 0; i < cards.length - 2; i++) {
+    if (cards[i] === cards[i+1]) {
+      counter++;
+      i++;
     }
-    if (counter >= 2) {
-        return true;
-    }
-    return false;
+  }
+  if (counter >= 2) {
+    return true;
+  }
+  return false;
 }
 
 function threeOfaKind(cards) {
-    for (var i in cards) {
-        if (cards[i] === cards[i+1] && cards[i+1] === cards[i+2]) {
-           return true;
-        }
+  for (var i in cards) {
+    if (cards[i] === cards[i+1] && cards[i+1] === cards[i+2]) {
+      return true;
     }
-    return false;
+  }
+  return false;
 }
 
 function raise(rank) {
-    var small = 100;
-    var big = 300;
-    return big * rank;
+  var small = 100;
+  var big = 300;
+  return big * rank;
 }
 
 function lotsOfMoney(gs) {
-    if (minbet(gs) >= gs.players[gs.in_action].stack / 3) {
-        return true;
-    }
+  if (minbet(gs) >= gs.players[gs.in_action].stack / 3) {
+    return true;
+  }
 }
 
 function checkAfterTheTurn(gs) {
@@ -125,7 +125,7 @@ function checkAfterTheTurn(gs) {
 function ranking(gs) {
   var cards = cardholder(gs);
   if (threeOfaKind(cards)) return odds.three
-  if (twoPair(cards)) return odds.twoPair;
+    if (twoPair(cards)) return odds.twoPair;
   if (findPair(cards)) {
     return odds.pair;
   } else {
