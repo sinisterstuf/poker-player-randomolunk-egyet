@@ -83,14 +83,16 @@ function twoPair(cards) {
     if (counter >= 2) {
         return true;
     }
+    return false;
 }
 
 function threeOfaKind(cards) {
-     for (var i in cards) {
+    for (var i in cards) {
         if (cards[i] === cards[i+1] && cards[i+1] === cards[i+2]) {
            return true;
         }
     }
+    return false;
 }
 
 function raise(rank) {
