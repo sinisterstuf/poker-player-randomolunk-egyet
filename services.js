@@ -94,7 +94,7 @@ function twoPair(cards) {
 }
 
 function threeOfaKind(cards) {
-  for (var i in cards) { //TODO: rewrite this as regular for loop
+  for (var i = 0; i < cards.length-2; i++) {
     if (cards[i] === cards[i+1] && cards[i+1] === cards[i+2]) {
       return true;
     }
