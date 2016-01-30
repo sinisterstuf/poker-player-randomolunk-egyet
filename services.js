@@ -25,9 +25,13 @@ function checkCard(card) {
     }
 
 function calculateBet(gs) {
+<<<<<<< HEAD
     console.log(minbetgs);
     console.log(randomRaise(ranking(gs)));
       return minbet(gs) + randomRaise(ranking(gs));
+=======
+      return minbet(gs) + raise(ranking(gs));
+>>>>>>> 414f8b642fa61962854e320f64e9b000aefc23d5
 }
 
 function cardholder(game_state) {
@@ -74,10 +78,10 @@ function threeOfaKind(game_state) {
     }
 }
 
-function randomRaise(rank) {
+function raise(rank) {
     var small = 100;
     var big = 300;
-    return Math.random(small*rank, big*rank);
+    return big * rank;
 }
 
 function lotsOfMoney(gs) {
