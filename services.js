@@ -103,7 +103,7 @@ function raise(rank) {
 }
 
 function lotsOfMoney(gs) {
-    if (minbet(gs) >= gs.players[gs.in_action].stack / 2) {
+    if (minbet(gs) >= gs.players[gs.in_action].stack / 3) {
         return true;
     }
 }
