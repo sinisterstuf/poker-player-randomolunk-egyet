@@ -1,10 +1,10 @@
 
 module.exports = {
 
-  VERSION: "Default JavaScript folding player",
+  VERSION: "Randomolunk Egyet",
 
   bet_request: function(game_state, bet) {
-    bet(0);
+    bet(10);
   },
 
   showdown: function(game_state) {
