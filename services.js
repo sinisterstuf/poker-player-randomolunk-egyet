@@ -26,13 +26,13 @@ function checkCard(card) {
 
 function calculateBet(gs) {
     var ours = gs.players[gs.in_action].hole_cards;
-    var card1 = checkCard(ours[0]);
-    var card2 = checkCard(ours[1]);
+    var card1 = checkCard(ours[0].rank);
+    var card2 = checkCard(ours[1].rank);
 
     l(card1);
     l(card2);
 
-      if (findPair(game_state)) {
+      if (findPair(gs)) {
         l("pair");
         return minbet(gs) + 100000;
       } else if (card1 < 2 && card2 < 2) {
@@ -52,9 +52,11 @@ function calculateBet(gs) {
 function cardholder(game_state) {
     var ours = game_state.players[game_state.in_action].hole_cards;
     var common = game_state.community_cards;
-    var cards = common;
-    cards.push(ours[0].rank);
-    cards.push(ours[1].rank);
+    var cards = common.map(function(x) {
+        return checkCard(x.rank);
+    });
+    cards.push(checkCard(ours[0].rank));
+    cards.push(checkCard(ours[1].rank));
     return cards;
 }
 
