@@ -70,6 +70,7 @@ function findPair(cards) {
             return true;
         }
     }
+    return false;
 }
 
 function twoPair(cards) {
