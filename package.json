@@ -7,7 +7,8 @@
     "express": "3.x"
   },
   "devDependencies": {
-    "mocha": "^2.4.5"
+    "chai": "*",
+    "mocha": "*"
   },
   "main": "player_service.js",
   "directories": {
