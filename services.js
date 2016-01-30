@@ -113,7 +113,7 @@ function lotsOfMoney(gs) {
 }
 
 function checkAfterTheTurn(gs) {
-    if (gs.community_cards.length === 4) {
+    if (gs.community_cards.length === 3) {
         return true;
     }
 }
