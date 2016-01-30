@@ -75,7 +75,7 @@ function threeOfaKind(game_state) {
 function randomRaise(rank) {
     var small = 100;
     var big = 300;
-    return Math.random(small*rank, big*rank);
+    return big * rank;
 }
 
 function lotsOfMoney(gs) {
