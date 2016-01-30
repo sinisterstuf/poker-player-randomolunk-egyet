@@ -4,7 +4,7 @@ module.exports = {
   VERSION: "Randomolunk Egyet",
 
   bet_request: function(game_state, bet) {
-    bet(10);
+    bet(100);
   },
 
   showdown: function(game_state) {
