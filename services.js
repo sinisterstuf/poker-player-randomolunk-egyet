@@ -109,6 +109,12 @@ function lotsOfMoney(gs) {
     }
 }
 
+function checkAfterTheRiver(gs) {
+    if (gs.players[gs.in_action].community_cards.length === 7) {
+        return true;
+    }
+}
+
 function ranking(gs) {
   if (threeOfaKind(gs)) return odds.three
   if (twoPair(gs)) return odds.twoPair;
