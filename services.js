@@ -5,24 +5,29 @@ function minbet(gs) {
 var l = console.log;
 
 function checkCard(card) {
-        switch (card) {
-            case "J" :
-                card = 11;
-                break;
-            case "Q" :
-                card = 12;
-                break;
-            case "K" :
-                card = 13;
-                break;
-            case "A" :
-                card = 14;
-                break;
-            default:
-                card = card;
-        }
-        return card;
-    }
+  switch (card) {
+    case "J" :
+      card = 11;
+      break;
+    case "Q" :
+      card = 12;
+      break;
+    case "K" :
+      card = 13;
+      break;
+    case "A" :
+      card = 14;
+      break;
+    default:
+      card = card;
+  }
+  return card;
+}
+
+function parsedBet(gs) {
+  var bet = calculateBet(gs);
+  return parseInt((bet < 0) ? 0 : bet);
+}
 
 function calculateBet(gs) {
     var ours = gs.players[gs.in_action].hole_cards;
@@ -73,5 +78,5 @@ function findPair(game_state) {
 
 
 module.exports = {
-    calBet: calculateBet,
+    calBet: parsedBet,
 }
