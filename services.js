@@ -16,8 +16,6 @@ function checkCard(card) {
                 card = card;
         }
     }
-}
-
 
 module.exports = {
     checkCard: checkCard,
