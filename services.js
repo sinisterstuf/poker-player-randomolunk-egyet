@@ -61,11 +61,10 @@ function cardholder(game_state) {
     });
     cards.push(checkCard(ours[0].rank));
     cards.push(checkCard(ours[1].rank));
-    return cards.sort();
+    return cards.sort(function(a,b) {return a-b;});
 }
 
-function findPair(game_state) {
-    var cards = cardholder(game_state);
+function findPair(cards) {
     for (var i=0; i < cards.length-1; i++) {
         if (cards[i] === cards[i+1]) {
             return true;
@@ -73,8 +72,7 @@ function findPair(game_state) {
     }
 }
 
-function twoPair(game_state) {
-    var cards = cardholder(game_state);
+function twoPair(cards) {
     counter = 0;
     for (var i = 0; i < cards.length - 2; i++) {
         if (cards[i] === cards[i+1]) {
@@ -87,8 +85,7 @@ function twoPair(game_state) {
     }
 }
 
-function threeOfaKind(game_state) {
-    var cards = cardholder(game_state);
+function threeOfaKind(cards) {
      for (var i in cards) {
         if (cards[i] === cards[i+1] && cards[i+1] === cards[i+2]) {
            return true;
@@ -108,10 +105,18 @@ function lotsOfMoney(gs) {
     }
 }
 
+function checkAfterTheRiver(gs) {
+    if (gs.players[gs.in_action].community_cards.length === 7) {
+        return true;
+    }
+}
+
 function ranking(gs) {
-  if (threeOfaKind(gs)) return odds.three
-  if (twoPair(gs)) return odds.twoPair;
-  if (findPair(gs)) {
+  var cards = cardholder(gs);
+
+  if (threeOfaKind(cards)) return odds.three
+  if (twoPair(cards)) return odds.twoPair;
+  if (findPair(cards)) {
     return odds.pair;
   } else {
     return false;

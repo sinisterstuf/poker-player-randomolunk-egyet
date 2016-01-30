@@ -13,4 +13,13 @@ describe("player", function() {
         })
     })
 
+    describe("#findPair", function() {
+        it("finds pair", function() {
+            assert.equal( s.findPair([1,2,3,3,4]), true )
+        })
+        it("ignores non-pair", function() {
+            assert.equal( s.findPair([1,2,3,4,5]), false )
+        })
+    })
+
 })
