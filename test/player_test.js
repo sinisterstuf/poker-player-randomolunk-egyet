@@ -11,11 +11,10 @@ describe("player", function() {
 
     describe("#bet_request", function() {
         it("should return a number", function() {
-console.log(player.bet_request(game_state_sample))
-            assert.equal(
-                typeof( player.bet_request(game_state_sample) ),
-                "number"
-            )
+            ( player.bet_request(game_state_sample, function(bet){
+                assert.equal(typeof(bet), "number")
+            }))
         })
     })
+
 })
