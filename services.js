@@ -65,8 +65,7 @@ function cardholder(game_state) {
 }
 
 function findPair(cards) {
-    for (var i in cards) {
-        if (i === cards.length) return false;
+    for (var i=0; i < cards.length-1; i++) {
         if (cards[i] === cards[i+1]) {
             return true;
         }
