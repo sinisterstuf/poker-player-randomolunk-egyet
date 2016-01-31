@@ -1,4 +1,4 @@
-'use strict';
+"use strict";
 
 var services = require("./services.js");
 
@@ -8,7 +8,7 @@ module.exports = {
 
   bet_request: function(game_state, bet) {
     try {
-      bet( services.calBet( game_state ));
+      bet(services.calBet(game_state));
     } catch (e) {
       console.log(e);
       bet(0);
@@ -19,6 +19,3 @@ module.exports = {
 
   }
 };
-
-
-

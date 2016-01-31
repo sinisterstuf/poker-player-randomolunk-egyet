@@ -1,78 +1,78 @@
-var assert = require("assert")
+var assert = require('chai').assert
 var s = require('../services')
 var gs = require("./data/game-state-example.json")
 
 describe("player", () => {
 
-    describe("#checkCard", () => {
+    describe("#cardToNum", () => {
         it("converts 7 to 7", () => {
-            assert.equal( s.checkCard(7), 7 )
+            assert.equal( s.cardToNum(7), 7 )
         })
         it("converts A to 14", () => {
-            assert.equal( s.checkCard('A'), 14 )
+            assert.equal( s.cardToNum('A'), 14 )
         })
     })
 
     describe("#findPair", () => {
         it("finds pair in hand", () => {
-            assert.equal( s.findPair([2,2]), true )
+            assert.ok( s.findPair([2,2]))
         })
         it("ignores non-pair in hand", () => {
-            assert.equal( s.findPair([2,3]), false )
+            assert.notOk( s.findPair([2,3]))
         })
         it("finds pair", () => {
-            assert.equal( s.findPair([1,2,3,3,4]), true )
+            assert.ok( s.findPair([1,2,3,3,4]))
         })
         it("finds aces in common", () => {
-            assert.equal( s.findPair([14,14,1,2,3,3,4]), true )
+            assert.ok( s.findPair([14,14,1,2,3,3,4]))
         })
         it("ignores non-pair", () => {
-            assert.equal( s.findPair([1,2,3,4,5]), false )
+            assert.notOk( s.findPair([1,2,3,4,5]))
         })
     })
 
     describe("#twoPair", () => {
         it("double in hand is impossible", () => {
-            assert.equal( s.twoPair([2,2]), false )
+            assert.notOk( s.twoPair([2,2]))
         })
         it("ignores non-pair in hand", () => {
-            assert.equal( s.twoPair([2,3]), false )
+            assert.notOk( s.twoPair([2,3]))
         })
         it("finds double", () => {
-            assert.equal( s.twoPair([2,2,3,3,4]), true )
+            assert.ok( s.twoPair([2,2,3,3,4]))
         })
         it("ignores single pair", () => {
-            assert.equal( s.twoPair([1,2,3,3,4]), false )
+            assert.notOk( s.twoPair([1,2,3,3,4]))
         })
         it("finds aces in common", () => {
-            assert.equal( s.twoPair([14,14,1,2,3,3,4]), true )
+            assert.ok( s.twoPair([14,14,1,2,3,3,4]))
         })
         it("ignores non-pair", () => {
-            assert.equal( s.twoPair([1,2,3,4,5]), false )
+            assert.notOk( s.twoPair([1,2,3,4,5]))
         })
     })
 
     describe("#threeOfaKind", () => {
         it("double in hand is impossible", () => {
-            assert.equal( s.threeOfaKind([2,2]), false )
+            assert.notOk( s.threeOfaKind([2,2]))
         })
         it("ignores non-pair in hand", () => {
-            assert.equal( s.threeOfaKind([2,3]), false )
+            assert.notOk( s.threeOfaKind([2,3]))
         })
         it("finds triplet", () => {
-            assert.equal( s.threeOfaKind([2,3,3,3,4]), true )
+            assert.ok( s.threeOfaKind([2,3,3,3,4]))
         })
         it("ignores single pair", () => {
-            assert.equal( s.threeOfaKind([1,2,3,3,4]), false )
+            assert.notOk( s.threeOfaKind([1,2,3,3,4]))
         })
         it("ignores double pair", () => {
-            assert.equal( s.threeOfaKind([2,2,3,3,4]), false )
+            assert.notOk( s.threeOfaKind([2,2,3,3,4]))
         })
         it("finds aces in common", () => {
-            assert.equal( s.threeOfaKind([14,14,14,2,3,3,4]), true )
+            assert.ok( s.threeOfaKind([14,14,14,2,3,3,4]))
         })
         it("ignores non-pair", () => {
-            assert.equal( s.threeOfaKind([1,2,3,4,5]), false )
+            assert.notOk( s.threeOfaKind([1,2,3,4,5]))
         })
     })
 
