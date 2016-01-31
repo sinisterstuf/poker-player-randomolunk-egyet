@@ -6,7 +6,7 @@ app.use(express.json());
 app.use(express.urlencoded());
 
 app.get('/', function(req, res){
-  res.send(200, 'OK')
+  res.send(200, 'OK');
 });
 
 app.post('/', function(req, res){
@@ -20,12 +20,12 @@ app.post('/', function(req, res){
   } else if(req.body.action == 'version') {
     res.send(200, player.VERSION);
   } else {
-    res.send(200, 'OK')
+    res.send(200, 'OK');
   }
 
 });
 
-port = parseInt(process.env['PORT'] || 1337);
+port = parseInt(process.env.PORT || 1337);
 host = "0.0.0.0";
 app.listen(port, host);
-console.log('Listening at http://' + host + ':' + port)
+console.log('Listening at http://' + host + ':' + port);

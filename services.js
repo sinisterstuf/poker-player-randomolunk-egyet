@@ -1,5 +1,5 @@
 function minbet(gs) {
-  return gs.current_buy_in - gs.players[gs.in_action]['bet'] + gs.minimum_raise;
+  return gs.current_buy_in - gs.players[gs.in_action].bet + gs.minimum_raise;
 }
 
 var l = console.log;
@@ -26,7 +26,7 @@ function checkCard(card) {
 
 function calculateBet(gs) {
   var bet;
-  var r = ranking(gs)
+  var r = ranking(gs);
   if (r) {
     return minbet(gs) + raise(r);
   } else {
@@ -124,8 +124,8 @@ function checkAfterTheTurn(gs) {
 
 function ranking(gs) {
   var cards = cardholder(gs);
-  if (threeOfaKind(cards)) return odds.three
-    if (twoPair(cards)) return odds.twoPair;
+  if (threeOfaKind(cards)) return odds.three;
+      if (twoPair(cards)) return odds.twoPair;
   if (findPair(cards)) {
     return odds.pair;
   } else {
@@ -139,7 +139,7 @@ var odds = {
   twoPair : 20,
   three : 46.3,
   straight : 254
-}
+};
 
 
 module.exports = {
@@ -155,4 +155,4 @@ module.exports = {
   raise: raise,
   lotsOfMoney: lotsOfMoney,
   ranking: ranking,
-}
+};
